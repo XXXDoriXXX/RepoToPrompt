@@ -1,0 +1,45 @@
+{
+  "name": "code-merger-god-mode",
+  "version": "1.0.0",
+  "description": "Ultimate Code Merger",
+  "main": "dist/main.js",
+  "author": "DORI",
+  "scripts": {
+    "start": "tsc && electron .",
+    "build": "tsc",
+    "dist": "npm run build && electron-builder"
+  },
+  "build": {
+    "appId": "com.yourname.codemerger",
+    "productName": "CodeMerger",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "index.html",
+      "package.json"
+    ],
+    "win": {
+      "target": "nsis",
+      "icon": "icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    }
+  },
+  "devDependencies": {
+    "@types/glob": "^9.0.0",
+    "electron": "^39.2.2",
+    "electron-builder": "^26.0.12",
+    "typescript": "^5.5.3"
+  },
+  "private": true,
+  "dependencies": {
+    "glob": "^13.0.0",
+    "ignore": "^7.0.5",
+    "isbinaryfile": "^5.0.7",
+    "js-tiktoken": "^1.0.21"
+  }
+}

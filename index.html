@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline';">
+    <title>Context Builder Pro</title>
+    <style>
+        body { background-color: #1e1e1e; color: #cccccc; font-family: 'Segoe UI', sans-serif; margin: 0; height: 100vh; display: flex; flex-direction: column; overflow: hidden; }
+
+        #drop-zone { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; border: 2px dashed #333; margin: 20px; border-radius: 10px; transition: 0.3s; }
+        #drop-zone.hover { border-color: #007fd4; background: #252526; }
+        .icon { font-size: 64px; margin-bottom: 20px; opacity: 0.5; }
+
+        #results-panel { display: none; flex-direction: column; height: 100%; padding: 20px; box-sizing: border-box; }
+
+        #stats-info { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-bottom: 20px; }
+        .stat-box { background: #252526; padding: 15px; border-radius: 8px; text-align: center; }
+        .stat-label { display: block; font-size: 12px; opacity: 0.7; margin-bottom: 5px; }
+        .stat-value { font-size: 24px; color: #fff; font-weight: bold; }
+
+        #security-warnings { background: #4d1111; border: 1px solid #ff4444; color: #ffcccc; padding: 10px; border-radius: 6px; margin-bottom: 15px; display: none; font-size: 13px; }
+
+        #file-list-container { flex: 1; overflow-y: auto; background: #252526; border-radius: 8px; padding: 10px; margin-bottom: 20px; border: 1px solid #333; }
+        ul { list-style: none; padding: 0; margin: 0; }
+        li { padding: 4px 0; border-bottom: 1px solid #333; font-family: monospace; font-size: 13px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+        .actions { display: flex; gap: 10px; }
+        button { flex: 1; padding: 12px; border: none; border-radius: 6px; font-weight: bold; cursor: pointer; transition: 0.2s; font-size: 14px; }
+        #btn-copy { background: #007fd4; color: white; }
+        #btn-copy:hover { background: #0060a0; }
+        #btn-save { background: #2d2d2d; color: white; border: 1px solid #444; }
+        #btn-save:hover { background: #3d3d3d; }
+        #btn-back { background: transparent; color: #777; flex: 0 0 50px; }
+        #btn-back:hover { color: #fff; background: #333; }
+        button:disabled { opacity: 0.5; cursor: not-allowed; }
+
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-thumb { background: #444; border-radius: 4px; }
+    </style>
+</head>
+<body>
+<div id="drop-zone">
+    <div class="icon">📂</div>
+    <h2>Drop Project Folder Here</h2>
+    <p style="opacity: 0.6">Auto .gitignore • Token Counter • Security Scan</p>
+</div>
+
+<div id="results-panel">
+    <div id="stats-info"></div>
+    <div id="security-warnings"></div>
+    <div style="margin-bottom: 5px; font-size: 12px; text-transform: uppercase; opacity: 0.7;">Included Files:</div>
+    <div id="file-list-container"><ul id="file-list"></ul></div>
+    <div class="actions">
+        <button id="btn-back">⬅</button>
+        <button id="btn-save">💾 Save File</button>
+        <button id="btn-copy">📋 Copy to Clipboard</button>
+    </div>
+</div>
+
+<script>var exports = {};</script>
+<script src="./dist/renderer.js"></script>
+</body>
+</html>
